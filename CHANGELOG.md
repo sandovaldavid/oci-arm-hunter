@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.1-beta.0...v1.2.2-beta.0) (2026-06-20)
+
+
+### Documentation
+
+* **docs:** implement dark mode and integrate readme and changelog pages ([#13](https://github.com/sandovaldavid/oci-arm-hunter/issues/13)) ([069189e](https://github.com/sandovaldavid/oci-arm-hunter/commit/069189ec34ae1d1e1ca37d3563d6f525f54270e0))
+
 ## [1.2.1-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.0-beta.0...v1.2.1-beta.0) (2026-06-20)
 
 
