@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.0.0-beta.0...v1.1.0-beta.0) (2026-06-20)
+
+
+### Features
+
+* **hunter:** initial OCI ARM hunter implementation ([432d6bf](https://github.com/sandovaldavid/oci-arm-hunter/commit/432d6bf907cd9be2d9a22b691f054d3abed2bd63))
+
+
+### Documentation
+
+* **docs:** add README, LICENSE, CONTRIBUTING and Jekyll site ([e581207](https://github.com/sandovaldavid/oci-arm-hunter/commit/e581207f6bd2bff6d4d84953a4a88433efb1a0fe))
+
 ## 1.0.0-beta.0 (2026-06-20)
 
 
