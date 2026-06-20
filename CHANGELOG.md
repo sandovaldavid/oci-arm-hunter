@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.0-beta.0...v1.2.1-beta.0) (2026-06-20)
+
+
+### Documentation
+
+* **docs:** update index.md limits and apply oracle redwood-inspired styles ([#9](https://github.com/sandovaldavid/oci-arm-hunter/issues/9)) ([68f9426](https://github.com/sandovaldavid/oci-arm-hunter/commit/68f94263c470a5d376b869824989fc92a65162ca))
+
 ## [1.2.0-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.1.0-beta.0...v1.2.0-beta.0) (2026-06-20)
 
 
