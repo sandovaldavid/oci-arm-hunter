@@ -1,0 +1,19 @@
+title: OCI ARM Hunter
+description: Automated hunter for Oracle Cloud ARM Always Free instances
+theme: jekyll-theme-cayman
+url: "https://sandovaldavid.github.io"
+baseurl: "/oci-arm-hunter"
+repository: sandovaldavid/oci-arm-hunter
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - "oci_vm_create.plan.md"
