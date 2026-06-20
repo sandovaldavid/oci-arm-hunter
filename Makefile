@@ -8,7 +8,7 @@ SERVICE_NAME := cazador-arm
 SERVICE_FILE := /etc/systemd/system/$(SERVICE_NAME).service
 RUN_USER     := $(shell whoami)
 
-.PHONY: help setup run run-bg logs status stop install uninstall
+.PHONY: help setup run run-bg logs status stop install uninstall docs-sync
 
 .DEFAULT_GOAL := help
 
@@ -96,3 +96,7 @@ uninstall: ## Desactiva y elimina el servicio systemd
 	@sudo rm -f $(SERVICE_FILE)
 	@sudo systemctl daemon-reload
 	@echo -e "\033[32m[✓]\033[0m Servicio $(SERVICE_NAME) eliminado."
+
+docs-sync: ## Sincroniza README.md y CHANGELOG.md con la web docs/
+	@python3 scripts/sync_docs.py
+
