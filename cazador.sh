@@ -161,7 +161,7 @@ main() {
     fi
 
     # --- Caso: sin capacidad ---
-    if echo "$response" | grep -qiE "Out of capacity|InsufficientServiceCapacity"; then
+    if echo "$response" | grep -qiE "Out of host capacity|Out of capacity|InsufficientServiceCapacity"; then
       log WARN "Sin capacidad en $ad_short — rotando AD y esperando cooldown..."
 
     # --- Caso: rate limiting ---
@@ -173,14 +173,19 @@ main() {
     # --- Caso: error de autenticación / configuración ---
     elif echo "$response" | grep -qiE "NotAuthenticated|InvalidParameter|NotAuthorized"; then
       log ERROR "Error de autenticación o parámetros inválidos. Revisa .env y la config de oci-cli."
-      log ERROR "Respuesta: $response"
+      log ERROR "Respuesta:\n$response"
       rm -f "$SSH_KEY_TMP"
       exit 1
+
+    # --- Caso: excepción de red / request ---
+    elif echo "$response" | grep -qi "RequestException"; then
+      log WARN "Error de conexión (RequestException) — reintentando..."
+      log WARN "Respuesta:\n$response"
 
     # --- Caso: error desconocido ---
     else
       log WARN "Respuesta inesperada — reintentando..."
-      log WARN "Respuesta: $(echo "$response" | head -3)"
+      log WARN "Respuesta:\n$response"
     fi
 
     # Rotar al siguiente AD
