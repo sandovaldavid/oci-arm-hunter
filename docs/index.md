@@ -69,5 +69,5 @@ Install the [ntfy app](https://ntfy.sh/) on your phone. No account required.
 
 ---
 
-[View on GitHub](https://github.com/sandovaldavid/oci-arm-hunter){: .btn}
-[Getting Started](getting-started){: .btn}
+Ready to claim your ARM instance? Check the [Getting Started](getting-started) guide to set up the hunter in less than 5 minutes.
+
