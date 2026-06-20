@@ -4,9 +4,6 @@ title: Getting Started
 description: Step-by-step guide to set up and run oci-arm-hunter.
 ---
 
-[Home](index) | Getting Started
-
----
 
 ## Prerequisites
 
@@ -131,6 +128,4 @@ ssh opc@<public-ip>         # Oracle Linux images
 
 If you stored your SSH key in Bitwarden, make sure the **Bitwarden SSH Agent** is active — it signs the SSH handshake using the private key in memory without writing it to disk.
 
----
 
-[Back to Home](index)
