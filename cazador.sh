@@ -96,18 +96,24 @@ notify() {
 # ---------------------------------------------------------------------------
 launch_instance() {
   local ad="$1"
+  local cmd=(
+    oci compute instance launch
+    --compartment-id   "$COMPARTMENT_OCID"
+    --availability-domain "$ad"
+    --display-name     "$DISPLAY_NAME"
+    --image-id         "$IMAGE_OCID"
+    --shape            "$SHAPE"
+    --shape-config     "{\"ocpus\":$OCPUS,\"memoryInGBs\":$MEMORY_GB}"
+    --subnet-id        "$SUBNET_OCID"
+    --assign-public-ip true
+    --ssh-authorized-keys-file "$SSH_KEY_TMP"
+  )
 
-  oci compute instance launch \
-    --compartment-id   "$COMPARTMENT_OCID" \
-    --availability-domain "$ad" \
-    --display-name     "$DISPLAY_NAME" \
-    --image-id         "$IMAGE_OCID" \
-    --shape            "$SHAPE" \
-    --shape-config     "{\"ocpus\":$OCPUS,\"memoryInGBs\":$MEMORY_GB}" \
-    --subnet-id        "$SUBNET_OCID" \
-    --assign-public-ip true \
-    --ssh-authorized-keys-file "$SSH_KEY_TMP" \
-    2>&1
+  if [[ -n "${BOOT_VOLUME_SIZE_GB:-}" ]]; then
+    cmd+=(--boot-volume-size-in-gbs "$BOOT_VOLUME_SIZE_GB")
+  fi
+
+  "${cmd[@]}" 2>&1
 }
 
 # ---------------------------------------------------------------------------
