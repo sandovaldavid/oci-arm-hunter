@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+npx --yes -p @commitlint/cli -p @commitlint/config-conventional commitlint --edit "$1"
