@@ -8,7 +8,9 @@ description: Claim your Oracle Cloud ARM Always Free instance automatically — 
 [![Latest Release](https://img.shields.io/github/v/release/sandovaldavid/oci-arm-hunter)](https://github.com/sandovaldavid/oci-arm-hunter/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/sandovaldavid/oci-arm-hunter/blob/main/LICENSE)
 
-Oracle's ARM Always Free tier (`VM.Standard.A1.Flex` — 4 OCPUs / 24 GB RAM) is almost always out of capacity. **oci-arm-hunter** retries the OCI API continuously until your instance is available, then claims it and notifies you — all without touching the web console.
+Oracle's ARM Always Free tier (`VM.Standard.A1.Flex` — 2 OCPUs / 12 GB RAM) is almost always out of capacity. **oci-arm-hunter** retries the OCI API continuously until your instance is available, then claims it and notifies you — all without touching the web console.
+
+> **Important Update (June 2026):** Oracle Cloud has reduced the Always Free Ampere A1 Compute limits to **2 OCPUs and 12 GB RAM** per tenancy. If you are using a Pay As You Go (PAYG) account to bypass capacity limits, make sure to configure `OCPUS=2` and `MEMORY_GB=12` in your `.env` to prevent unexpected charges.
 
 ---
 
