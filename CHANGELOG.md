@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.0...v1.2.1) (2026-06-20)
+
+
+### Documentation
+
+* **docs:** trigger release for docs changes ([7ec5a50](https://github.com/sandovaldavid/oci-arm-hunter/commit/7ec5a50a345ed860814b514fc2e8cf33138037ea))
+
 ## [1.2.2-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.1-beta.0...v1.2.2-beta.0) (2026-06-20)
 
 
