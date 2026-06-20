@@ -65,14 +65,14 @@ check_prereqs() {
   ok "oci-cli encontrado: $(oci --version 2>&1 | head -1)"
 
   if [[ ! -f ~/.oci/config ]]; then
-    error "~/.oci/config no existe. Configura OCI CLI con: oci setup config"
+    error "$HOME/.oci/config no existe. Configura OCI CLI con: oci setup config"
     exit 1
   fi
   if ! grep -q "^tenancy=" ~/.oci/config; then
-    error "~/.oci/config no tiene el campo 'tenancy'. Verifica tu configuración."
+    error "$HOME/.oci/config no tiene el campo 'tenancy'. Verifica tu configuración."
     exit 1
   fi
-  ok "~/.oci/config encontrado y válido."
+  ok "$HOME/.oci/config encontrado y válido."
 
   if ! command -v jq &>/dev/null; then
     error "jq no está instalado (requerido para parsear respuestas JSON)."
