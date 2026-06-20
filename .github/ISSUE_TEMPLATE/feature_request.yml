@@ -1,0 +1,36 @@
+name: Feature Request
+description: Suggest an improvement or new feature.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What problem does this feature solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought about?
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Affected component
+      options:
+        - label: "`cazador.sh` — retry loop"
+        - label: "`setup.sh` — configuration wizard"
+        - label: "`Makefile` — targets"
+        - label: Documentation / website
+        - label: CI/CD
