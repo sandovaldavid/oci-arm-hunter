@@ -1,110 +1,385 @@
 ---
 ---
 
-// 1. Definir variables antes de importar el tema (usando !default override)
-$header-bg-color: #8C2D19;            // Rojo Redwood oscuro principal
-$header-bg-color-secondary: #5C1C0F;  // Terracota profundo de Oracle Redwood
-$section-headings-color: #8C2D19;     // Encabezados en tono Redwood corporativo
+// 1. Define custom dark variables before importing the theme
+$header-bg-color: #1a0d0b;            // Dark Redwood theme header gradient start
+$header-bg-color-secondary: #0f0706;  // Dark Redwood theme header gradient end
+$section-headings-color: #ff7f62;     // Bright glowing Redwood accent for headings
 
 @import "jekyll-theme-cayman";
 
-// 2. Estilos personalizados para un acabado premium de Oracle Redwood
+// 2. Premium Dark mode overrides
 body {
-  color: #2D2A26;                     // Carbón cálido (evita negro puro)
-  background-color: #FAF9F6;          // Fondo crema cálido muy sutil (Warm Off-white)
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #e3dcd5;                     // Warm light gray text
+  background-color: #120f0e;          // Dark charcoal background with a warm hue
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-// Enlaces en tono Redwood
+// Glowing links in Redwood Dark
 a {
-  color: #A63F28;
+  color: #ff8e75;
   text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #5C1C0F;
-  text-decoration: underline;
-}
-
-// Botones en la cabecera (formato elegante y minimalista)
-.btn {
-  color: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.4) !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
   
   &:hover {
-    color: #FFF !important;
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    border-color: rgba(255, 255, 255, 0.8) !important;
+    color: #ffb1a2;
+    text-shadow: 0 0 8px rgba(255, 142, 117, 0.3);
+    text-decoration: none;
   }
 }
 
-// Código y bloques de comandos
+// Sticky top navigation bar with glassmorphism
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(18, 15, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 127, 98, 0.15);
+  padding: 14px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+  .nav-container {
+    max-width: 64rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #e3dcd5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.02em;
+
+    .logo-emoji {
+      font-size: 1.3rem;
+    }
+
+    &:hover {
+      color: #ff8e75;
+      text-shadow: 0 0 10px rgba(255, 142, 117, 0.4);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    
+    @media (max-width: 48rem) {
+      gap: 1rem;
+    }
+  }
+
+  .nav-link {
+    color: #a89d96;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #ff7f62;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover {
+      color: #e3dcd5;
+      
+      &::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+
+    &.active {
+      color: #ff7f62;
+      font-weight: 600;
+      
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .nav-btn {
+    background: linear-gradient(135deg, #ff7f62 0%, #ff5d3a 100%);
+    color: #120f0e !important;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(255, 127, 98, 0.3);
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(255, 127, 98, 0.5);
+      background: linear-gradient(135deg, #ff947c 0%, #ff7353 100%);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Hero header styling
+.page-header {
+  background-color: #1a0d0b;
+  background-image: linear-gradient(135deg, #1a0d0b 0%, #080404 100%) !important;
+  border-bottom: 1px solid rgba(255, 127, 98, 0.1);
+  padding: 5rem 2rem 6rem 2rem !important;
+  text-align: center;
+
+  @media (max-width: 48rem) {
+    padding: 3.5rem 1rem 4.5rem 1rem !important;
+  }
+  
+  .project-name {
+    font-size: 3.25rem !important;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 30%, #ffcaa6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    
+    @media (max-width: 48rem) {
+      font-size: 2.25rem !important;
+    }
+  }
+
+  .project-tagline {
+    font-size: 1.25rem !important;
+    color: #a89d96 !important;
+    max-width: 40rem;
+    margin: 0 auto 2rem auto;
+    font-weight: 400;
+    line-height: 1.5;
+    
+    @media (max-width: 48rem) {
+      font-size: 1.1rem !important;
+    }
+  }
+}
+
+// Custom Cayman Buttons
+.btn {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 127, 98, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.25rem !important;
+  font-size: 0.95rem !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  margin: 0.5rem !important;
+
+  &:hover {
+    color: #fff !important;
+    background-color: rgba(255, 127, 98, 0.1) !important;
+    border-color: #ff7f62 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 127, 98, 0.15) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
+  }
+}
+
+// Main Content Section
+.main-content {
+  max-width: 64rem !important;
+  padding: 3rem 1.5rem !important;
+  margin: 0 auto;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #ff7f62 !important;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  
+  h1 { font-size: 2.2rem; border-bottom: 1px solid rgba(255, 127, 98, 0.15); padding-bottom: 0.5rem; }
+  h2 { font-size: 1.75rem; border-bottom: 1px solid rgba(255, 127, 98, 0.1); padding-bottom: 0.3rem; }
+  h3 { font-size: 1.4rem; }
+  h4 { font-size: 1.2rem; }
+
+  hr {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 127, 98, 0.2) 0%, rgba(255, 127, 98, 0) 100%);
+    border: none;
+    margin: 2.5rem 0;
+  }
+}
+
+// Code & Preformatted Blocks (Redwood Terminal Aesthetic)
 code {
-  background-color: #EFECE6;          // Fondo de código en crema suave
-  color: #8C2D19;                     // Texto de código inline en tono Redwood
-  padding: 2px 6px;
-  border-radius: 3px;
+  background-color: #1a1615;          // Dark rich warm tone
+  color: #ff9f89;                     // Redwood warm highlight
+  padding: 3px 6px;
+  border-radius: 4px;
   font-size: 85%;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  border: 1px solid rgba(255, 127, 98, 0.1);
 }
 
 pre {
-  background-color: #1E1B18 !important; // Fondo oscuro cálido para bloques de código
-  border: 1px solid #DFDBD3;
-  border-radius: 4px;
-  padding: 16px;
+  background-color: #0b0908 !important; // Darkest shade for terminal codeblock
+  border: 1px solid rgba(255, 127, 98, 0.15) !important;
+  border-radius: 8px;
+  padding: 18px;
+  overflow-x: auto;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.8), 0 4px 15px rgba(0, 0, 0, 0.3);
   
   & > code {
     background-color: transparent;
-    color: #FFF;
+    color: #ebdcd0;
     padding: 0;
     font-size: 90%;
+    border: none;
   }
 }
 
-// Bloques de avisos / notas (Blockquotes) estilizados
+// Alert / Info Blocks (Blockquotes)
 blockquote {
-  border-left: 4px solid #8C2D19;
-  background-color: #F5F2EB;
+  border-left: 4px solid #ff7f62;
+  background-color: #1b1311;
   padding: 16px 20px;
-  margin: 30px 0;
-  border-radius: 0 4px 4px 0;
-  color: #4A4641;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+  color: #ebdcd0;
   font-style: normal;
+  border-top: 1px solid rgba(255, 127, 98, 0.05);
+  border-right: 1px solid rgba(255, 127, 98, 0.05);
+  border-bottom: 1px solid rgba(255, 127, 98, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   
   & > p {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.6;
   }
+  
+  strong {
+    color: #ff7f62;
+  }
 }
 
-// Tablas estilizadas al estilo corporativo
+// Styled Tables
 table {
   border-collapse: collapse;
   width: 100%;
-  margin: 30px 0;
-  background-color: #FFF;
-  border-radius: 4px;
+  margin: 2.5rem 0;
+  background-color: #161211;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 127, 98, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 th {
-  background-color: #8C2D19;
-  color: #FFF;
+  background-color: #211513;
+  color: #ff7f62;
   font-weight: 600;
   text-align: left;
-  padding: 12px 16px;
+  padding: 14px 18px;
+  border-bottom: 2px solid rgba(255, 127, 98, 0.2);
+  letter-spacing: 0.02em;
 }
 
 td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #EFECE6;
-  color: #4A4641;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 127, 98, 0.08);
+  color: #c9bfb5;
+}
+
+tr:last-child td {
+  border-bottom: none;
 }
 
 tr:hover {
-  background-color: #F5F2EB;
+  background-color: #1e1715;
+}
+
+// Beautiful site footer
+.site-footer {
+  border-top: 1px solid rgba(255, 127, 98, 0.1);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  color: #7a6e66;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  
+  .site-footer-owner {
+    color: #8f8278;
+    a {
+      font-weight: 600;
+      color: #ff8e75;
+    }
+  }
+  
+  .site-footer-credits {
+    color: #72665e;
+  }
+}
+
+@media (max-width: 38rem) {
+  .site-nav {
+    .nav-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        
+        .nav-btn {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
