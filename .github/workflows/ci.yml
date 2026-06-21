@@ -45,17 +45,17 @@ jobs:
           echo "Source branch: $source_branch"
           
           if [ "$target_branch" = "main" ]; then
-            if [[ "$source_branch" =~ ^(develop|hotfix\/.*|release\/.*)$ ]]; then
+            if [[ "$source_branch" =~ ^(develop|hotfix\/.*|release\/.*|release-please--branches--.*)$ ]]; then
               echo "✅ Valid branch flow: $source_branch -> $target_branch"
             else
-              echo "❌ Invalid branch flow: Only 'develop', 'hotfix/*', or 'release/*' branches can be merged into 'main'."
+              echo "❌ Invalid branch flow: Only 'develop', 'hotfix/*', 'release/*', or 'release-please--branches--*' branches can be merged into 'main'."
               exit 1
             fi
           elif [ "$target_branch" = "develop" ]; then
-            if [[ "$source_branch" =~ ^(feat\/.*|fix\/.*|refactor\/.*|hotfix\/.*|chore\/.*|docs\/.*|test\/.*|ci\/.*|main)$ ]]; then
+            if [[ "$source_branch" =~ ^(feat\/.*|fix\/.*|refactor\/.*|hotfix\/.*|chore\/.*|docs\/.*|test\/.*|ci\/.*|main|release-please--branches--.*)$ ]]; then
               echo "✅ Valid branch flow: $source_branch -> $target_branch"
             else
-              echo "❌ Invalid branch flow: Branch '$source_branch' cannot be merged into '$target_branch'. Allowed prefixes: feat/, fix/, refactor/, hotfix/, chore/, docs/, test/, ci/, or 'main'."
+              echo "❌ Invalid branch flow: Branch '$source_branch' cannot be merged into '$target_branch'. Allowed prefixes: feat/, fix/, refactor/, hotfix/, chore/, docs/, test/, ci/, 'main', or 'release-please--branches--*'."
               exit 1
             fi
           fi
