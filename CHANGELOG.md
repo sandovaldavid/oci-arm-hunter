@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.2-beta.0...v1.3.0-beta.0) (2026-06-21)
+
+
+### Features
+
+* **ci:** enforce git flow and branch policies ([#19](https://github.com/sandovaldavid/oci-arm-hunter/issues/19)) ([b069fa5](https://github.com/sandovaldavid/oci-arm-hunter/commit/b069fa50b59b411712ca7140044f4c2166611d51))
+
+
+### Bug Fixes
+
+* **ci:** allow release-please branches in branch flow validation ([#21](https://github.com/sandovaldavid/oci-arm-hunter/issues/21)) ([93fb08e](https://github.com/sandovaldavid/oci-arm-hunter/commit/93fb08e80a43d3826720f65359051c20dc2fe5bf))
+
 ## [1.2.2-beta.0](https://github.com/sandovaldavid/oci-arm-hunter/compare/v1.2.1-beta.0...v1.2.2-beta.0) (2026-06-20)
 
 
