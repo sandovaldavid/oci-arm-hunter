@@ -31,3 +31,32 @@ jobs:
         uses: wagoid/commitlint-github-action@v6
         with:
           configFile: .commitlintrc.json
+
+  branch-flow:
+    name: Branch Flow Validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Validate branch flow
+        run: |
+          target_branch="${{ github.base_ref }}"
+          source_branch="${{ github.head_ref }}"
+          echo "Target branch: $target_branch"
+          echo "Source branch: $source_branch"
+          
+          if [ "$target_branch" = "main" ]; then
+            if [[ "$source_branch" =~ ^(develop|hotfix\/.*|release\/.*)$ ]]; then
+              echo "✅ Valid branch flow: $source_branch -> $target_branch"
+            else
+              echo "❌ Invalid branch flow: Only 'develop', 'hotfix/*', or 'release/*' branches can be merged into 'main'."
+              exit 1
+            fi
+          elif [ "$target_branch" = "develop" ]; then
+            if [[ "$source_branch" =~ ^(feat\/.*|fix\/.*|refactor\/.*|hotfix\/.*|chore\/.*|docs\/.*|test\/.*|ci\/.*|main)$ ]]; then
+              echo "✅ Valid branch flow: $source_branch -> $target_branch"
+            else
+              echo "❌ Invalid branch flow: Branch '$source_branch' cannot be merged into '$target_branch'. Allowed prefixes: feat/, fix/, refactor/, hotfix/, chore/, docs/, test/, ci/, or 'main'."
+              exit 1
+            fi
+          fi
+
