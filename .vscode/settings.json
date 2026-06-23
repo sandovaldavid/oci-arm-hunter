@@ -1,0 +1,50 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.trimAutoWhitespace": true,
+  "editor.renderWhitespace": "selection",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  "[shellscript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "foxundermoon.shellman"
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[makefile]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
+
+  // Associate files
+  "files.associations": {
+    ".env.example": "dotenv",
+    ".env": "dotenv",
+    "Makefile": "makefile"
+  },
+
+  // Exclude cazador.log from file watchers and search to prevent high CPU / disk IO
+  "files.watcherExclude": {
+    "**/cazador.log": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  },
+  "search.exclude": {
+    "**/cazador.log": true,
+    "**/.git": true,
+    "**/node_modules": true
+  },
+
+  // Shellcheck configurations
+  "shellcheck.enable": true,
+  "shellcheck.run": "onType",
+  "shellcheck.exclude": []
+}

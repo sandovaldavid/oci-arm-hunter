@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "timonwong.shellcheck",
+    "foxundermoon.shellman",
+    "mikestead.dotenv",
+    "ms-vscode.makefile-tools",
+    "davidanson.vscode-markdownlint",
+    "ms-python.python"
+  ]
+}

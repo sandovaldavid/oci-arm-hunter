@@ -7,6 +7,7 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export PATH="$HOME/bin:$PATH"
 ENV_FILE="$SCRIPT_DIR/.env"
 LOG_FILE="$SCRIPT_DIR/cazador.log"
 SSH_KEY_TMP="/tmp/oci_cazador_key.pub"

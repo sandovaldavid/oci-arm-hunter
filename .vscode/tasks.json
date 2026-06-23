@@ -1,0 +1,64 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Hunter: Setup",
+      "type": "shell",
+      "command": "make setup",
+      "problemMatcher": [],
+      "group": "setup",
+      "detail": "Runs the interactive wizard to generate .env using oci-cli"
+    },
+    {
+      "label": "Hunter: Run (Foreground)",
+      "type": "shell",
+      "command": "make run",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Launches the hunter in the foreground to watch live output"
+    },
+    {
+      "label": "Hunter: Run Background (tmux)",
+      "type": "shell",
+      "command": "make run-bg",
+      "problemMatcher": [],
+      "group": "none",
+      "detail": "Launches the hunter in a persistent background tmux session"
+    },
+    {
+      "label": "Hunter: Follow Logs",
+      "type": "shell",
+      "command": "make logs",
+      "problemMatcher": [],
+      "group": "none",
+      "detail": "Follow the cazador.log file in real-time"
+    },
+    {
+      "label": "Hunter: Check Status",
+      "type": "shell",
+      "command": "make status",
+      "problemMatcher": [],
+      "group": "none",
+      "detail": "Check if the hunter is running (tmux or systemd)"
+    },
+    {
+      "label": "Hunter: Stop tmux session",
+      "type": "shell",
+      "command": "make stop",
+      "problemMatcher": [],
+      "group": "none",
+      "detail": "Kills the running tmux background session"
+    },
+    {
+      "label": "Lint: ShellCheck",
+      "type": "shell",
+      "command": "shellcheck cazador.sh setup.sh",
+      "problemMatcher": [],
+      "group": "test",
+      "detail": "Lints the main bash files using shellcheck"
+    }
+  ]
+}
